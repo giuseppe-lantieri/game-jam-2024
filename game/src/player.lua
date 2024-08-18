@@ -24,7 +24,7 @@ function Player:create_piece(type)
 
 		Player.piece:setPostSolve(function(collider_1, collider_2)
 			if collider_1.collision_class == 'Player' and collider_2.collision_class == 'Key' then
-				print("new level unlocked, ", index_level)
+				-- print("new level unlocked, ", index_level)
 				destroy_level();
 				Text.r = true;
 				game_state = 3;

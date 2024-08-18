@@ -25,8 +25,13 @@ function love.load()
 	world:addCollisionClass("Key");
 	Level:load();
 
+	KeysSFX = love.audio.newSource("/assets/keys.wav", "stream");
+	MusicSFX = love.audio.newSource("/assets/mugg.wav", "stream");
+
 	create_level()
 	game_state = -1;
+	MusicSFX:setLooping(true);
+	MusicSFX:play()
 end
 
 function love.update(dt)
@@ -77,6 +82,7 @@ function love.keypressed(key)
 	if key == "return" and game_state == 3 then
 		Text.r = false;
 		Text.ended = false;
+		KeysSFX:play()
 		Points:finish()
 		nextlevel();
 	end

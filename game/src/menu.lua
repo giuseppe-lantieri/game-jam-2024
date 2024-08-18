@@ -4,7 +4,7 @@ function Menu:update(dt)
 		suit.Label("Nome Gioco:", { id = "title", color = ColorUi(255, 255, 255) }, Modal.w / 2 - 200, Modal.h / 8,
 			400, 50)
 		suit.Label(
-			"Tutorial:\n-a-d:\t\t\t\tto move\n-space:\t\t\tto scale\n-r:\t\t\t\t\tto replay\n\n\nGoal:\nPass All the Levels with the lowest point possible",
+			"Tutorial:\n-a-d:\t\t\t\tto move\n-space:\t\t\tto scale\n-r:\t\t\t\t\tto replay\n\n\nGoal:\nPass All the Levels with the lowest point possible\n\nGame by GanzioBello\nMusic by Refuse",
 			{ id = "tutorial", color = ColorUi(255, 255, 255), align = "left" }, Modal.w / 2 - 200, Modal.h / 1.5,
 			400, 50);
 		if suit.Button("Play!", { id = "play" }, Modal.w / 2 - 200, Modal.h / 2, 400, 50).hit then

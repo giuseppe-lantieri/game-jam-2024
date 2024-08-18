@@ -1,6 +1,16 @@
 {
 	"scripts": {
 		"Run": "lovec .",
-		"Build": "cd ../game & makelove --config ../tools/build/makelove.toml"
+		"Build": "cd ../game & makelove --config ../tools/build/makelove.toml",
+		"clear": "cd ../builds && del \"tetris-alternative.love\" && del \"tetris-alternative.zip\"",
+		"zip": "npm run clear && cd ../game && TAR avcf ../builds/tetris-alternative.zip --exclude=.vscode --exclude=*/.gitkeep --exclude=*.zip --exclude=*.love * && ren \"../builds/tetris-alternative.zip\" \"../builds/tetris-alternative.love\"",
+		"build-ws": "copy /b \"C:\\Program Files\\LOVE\\love.exe\"+\"..\\builds\\tetris-alternative.love\" \"../builds/tetris-alternative.exe\"",
+		"zip-build-ws": "npm run zip && npm run build-ws",
+		"build-js": "npx love.js.cmd \"../builds/tetris-alternative.love\" ../builds/tetris-alternative -c -t=tetris-alternative",
+		"zip-build-js": "npm run zip && npm run build-js",
+		"builds": "npm run zip && npm run build-js && npm run build-ws"
+	},
+	"dependencies": {
+		"love.js": "^11.4.1"
 	}
 }

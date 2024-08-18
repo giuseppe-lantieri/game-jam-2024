@@ -9,6 +9,7 @@ require "src.key"
 require "src.modal"
 require "src.points";
 require "src.text"
+require "src.menu"
 
 types = { "box", "t_l", "t_r" };
 index_type = 1;
@@ -16,15 +17,16 @@ type_piece = types[index_type];
 
 index_level = 1;
 
-game_state = 0;
 
 
 function love.load()
 	world = wf.newWorld(0, 0, true)
 	world:addCollisionClass("Player");
 	world:addCollisionClass("Key");
+	Level:load();
 
 	create_level()
+	game_state = -1;
 end
 
 function love.update(dt)
@@ -34,13 +36,18 @@ function love.update(dt)
 		Modal:update(dt)
 		Player:move(dt)
 	end
+	Menu:update();
 	Text:update()
 end
 
 function love.draw()
-	world:draw()
-	Key:draw()
-	Modal:draw()
+	SetColor(225, 225, 225)
+	if game_state ~= -1 and game_state ~= 2 and game_state ~= 3 then
+		world:draw()
+		Key:draw()
+		Modal:draw()
+	end
+	Menu:draw()
 	suit.draw()
 end
 
@@ -60,8 +67,9 @@ function love.keypressed(key)
 		Text.ended = false;
 		Points:recover();
 		create_level();
+		game_state = 1;
 	end
-	if key == "return" then
+	if key == "return" and game_state == 3 then
 		Text.r = false;
 		Text.ended = false;
 		Points:finish()
@@ -77,13 +85,10 @@ function destroy_level()
 	Player:destroy();
 	Box:destroy();
 	Level:destroy();
-	game_state = 0;
 end
 
 function create_level()
 	destroy_level();
-
-	game_state = 1;
 
 	Modal.w, Modal.h = love.window.getMode()
 	world:setGravity(0, Modal.h * 0.85)
@@ -98,6 +103,7 @@ function nextlevel()
 		index_level = index_level + 1;
 		Text.r = false;
 		create_level();
+		game_state = 1;
 	else
 		Text.ended = true
 		game_state = 2;

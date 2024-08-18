@@ -23,8 +23,8 @@ function Points:recover()
 end
 
 function Points.update(dt)
-	suit.Label("Points:" .. Points.points, { id = "points", color = ColorUi(255, 255, 255) }, Modal.w / 30, Modal.h / 30)
-	suit.Label("Last Points:" .. Points.recover_points, { id = "points", color = ColorUi(255, 255, 255) },
-		Modal.w / 30 * 6,
-		Modal.h / 30)
+	if game_state ~= -1 and not Text.ended then
+		suit.Label("Points:" .. Points.points, { id = "points", color = ColorUi(255, 255, 255) }, Modal.w / 30,
+			Modal.h / 30)
+	end
 end

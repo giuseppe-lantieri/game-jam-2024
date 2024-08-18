@@ -27,6 +27,7 @@ function Player:create_piece(type)
 				print("new level unlocked, ", index_level)
 				destroy_level();
 				Text.r = true;
+				game_state = 3;
 			end
 		end)
 	end

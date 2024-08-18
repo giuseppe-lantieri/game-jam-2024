@@ -49,10 +49,25 @@ function Modal:update(dt)
 				Modal.current_index = Modal.current_index - 1
 			end
 		end
-
 		if suit.Button(">", { id = "measure_right" }, Modal.w / 2 + 50, Modal.h / 2 + 100, 50, 50).hit then
 			if Modal.current_index < #Modal.unit_sistem then
 				Modal.current_index = Modal.current_index + 1
+			end
+		end
+		suit.Label("Shape:", { id = "shape", color = ColorUi(255, 255, 255) }, Modal.w / 2 - 200, Modal.h / 2 + 200,
+			60, 50)
+		suit.Label(type_piece, { id = "shape_number", color = ColorUi(255, 255, 255) },
+			Modal.w / 2 - 25, Modal.h / 2 + 200, 50, 50)
+		if suit.Button("<", { id = "shape_left" }, Modal.w / 2 - 100, Modal.h / 2 + 200, 50, 50).hit then
+			if index_type - 1 > 0 then
+				index_type = index_type - 1
+				type_piece = types[index_type]
+			end
+		end
+		if suit.Button(">", { id = "shape_right" }, Modal.w / 2 + 50, Modal.h / 2 + 200, 50, 50).hit then
+			if index_type + 1 <= #types then
+				index_type = index_type + 1
+				type_piece = types[index_type]
 			end
 		end
 	end
@@ -61,8 +76,8 @@ end
 function Modal:draw()
 	if Modal.show_modal then
 		SetColor(0, 0, 0)
-		love.graphics.rectangle("fill", Modal.w / 2 - 250, Modal.h / 2 - 200, 500, 400)
+		love.graphics.rectangle("fill", Modal.w / 2 - 250, Modal.h / 2 - 200, 500, 520)
 		SetColor(255, 255, 255)
-		love.graphics.rectangle("line", Modal.w / 2 - 250, Modal.h / 2 - 200, 500, 400)
+		love.graphics.rectangle("line", Modal.w / 2 - 250, Modal.h / 2 - 200, 500, 520)
 	end
 end

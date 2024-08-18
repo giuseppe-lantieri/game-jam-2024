@@ -62,6 +62,11 @@ function love.keypressed(key)
 			end
 		end
 	end
+	if key == "w" then
+		index_type = math.fmod(index_type + 1, #types) + 1;
+		print(index_type)
+		type_piece = types[index_type];
+	end
 	if key == "r" then
 		Text.r = false;
 		Text.ended = false;

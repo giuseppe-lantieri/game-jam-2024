@@ -1,7 +1,7 @@
 Menu = {}
 function Menu:update(dt)
 	if game_state == -1 then
-		suit.Label("Nome Gioco:", { id = "title", color = ColorUi(255, 255, 255) }, Modal.w / 2 - 200, Modal.h / 8,
+		suit.Label("Italian SI:", { id = "title", color = ColorUi(255, 255, 255) }, Modal.w / 2 - 200, Modal.h / 8,
 			400, 50)
 		suit.Label(
 			"Tutorial:\n-a-d:\t\t\t\tto move\n-space:\t\t\tto scale\n-r:\t\t\t\t\tto replay\n\n\nGoal:\nPass All the Levels with the lowest point possible\n\nGame by GanzioBello\nMusic by Refuse",
